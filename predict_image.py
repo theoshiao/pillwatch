@@ -1,13 +1,20 @@
 from roboflow import Roboflow
 from config import *
 from flask import Flask, request, jsonify
+from flask_sqlalchemy import SQLAlchemy
+
 import tempfile
 import os
 
 TEST_IMAGE_PATH = "./images/test_image.jpg"
 RF_PROJECT_NAME = "pills-sxdht" # https://universe.roboflow.com/roboflow-100/pills-sxdht/model/1
+SQLALCHEMY_DATABASE_URI = 'pillwatch'
 
 app = Flask(__name__)
+
+app.config[SQLALCHEMY_DATABASE_URI] = f'postgresql://amyxjhuang:{POSTGRESQL_PASSWORD}@localhost/pillwatch'
+db = SQLAlchemy(app)
+
 
 ''' Given the file path for the image to identify, use model from roboflow to make a prediction '''
 def predict_pill_from_image_path(image_path=TEST_IMAGE_PATH):
