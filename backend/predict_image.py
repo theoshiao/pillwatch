@@ -3,6 +3,7 @@ from config import *
 from flask import Flask, request, jsonify
 import tempfile
 import os
+from flask_sqlalchemy import SQLAlchemy
 
 TEST_IMAGE_PATH = "./images/test_image.jpg"
 RF_PROJECT_NAME = "pills-sxdht" # https://universe.roboflow.com/roboflow-100/pills-sxdht/model/1
