@@ -5,7 +5,33 @@ export async function fetchData(endpoint, options) {
     return data;
   }
 
-export async function loginUser(userame, password) {
+export async function submitFile(selectedFile, setResponse) {
+    if (!selectedFile) {
+      alert('Please select a file before submitting.');
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append('image', selectedFile);
+
+    try {
+      const response = await fetch('/identify-pill', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (response.status === 200) {
+        const data = await response.json();
+        setResponse(data);
+      } else {
+        console.error('Error:', response.status);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
+export async function loginUser(username, password) {
       const data = {
           username: "username",
           password: "password",
