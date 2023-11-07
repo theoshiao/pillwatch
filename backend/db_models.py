@@ -1,5 +1,5 @@
 from db import *
-from flask_login import UserMixin
+from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from bcrypt import checkpw, gensalt, hashpw
 from config import *
 
@@ -16,6 +16,10 @@ class User(db.Model, UserMixin):
     def check_password(self, password):
         # Compare the provided password with the stored hashed password
         return checkpw(password.encode('utf-8'), self.password)
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 
 class Pill(db.Model): 
     __tablename__ = 'pills'

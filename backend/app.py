@@ -3,10 +3,7 @@ from predict_image import predict_pill_from_image_path
 import time, tempfile
 from flask_login import LoginManager, login_user, logout_user, login_required
 from db_models import User, Pill, db, app
-
-login_manager = LoginManager()
-login_manager.login_view = "login"
-login_manager.init_app(app)
+import os
 
 @app.route("/")
 def hello_world():
@@ -40,9 +37,9 @@ def register():
         password = request.form.get('password')
         user = User(username=username) 
         user.set_password(password)
-        db.session.add(user)
-        db.session.commit()
-        return {'success': 'account created!'}
+        # db.session.add(user)
+        # db.session.commit()
+        return {'success': 'account created! jk nothing is going to happen'}
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
