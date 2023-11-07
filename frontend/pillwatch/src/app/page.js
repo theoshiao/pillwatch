@@ -1,4 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
+import FileUpload from "./fileUpload";
 
 async function Home() {
   const res = await fetch("http://127.0.0.1:5000/api/time");
@@ -8,6 +9,7 @@ async function Home() {
   return (
     <>
       <h1> hello, it is {time.time} </h1>
+      <FileUpload />
     </>
   );
 }
