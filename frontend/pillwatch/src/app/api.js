@@ -15,7 +15,7 @@ export async function submitFile(selectedFile, setResponse) {
     formData.append('image', selectedFile);
 
     try {
-      const response = await fetch('/identify-pill', {
+      const response = await fetch('http://127.0.0.1:5000/api/identify-pill', {
         method: 'POST',
         body: formData,
       });

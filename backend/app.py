@@ -14,7 +14,7 @@ def get_current_time():
     print('testing that endpoint was hit')
     return {'time': time.time()}
 
-@app.route('/identify-pill', methods=['POST'])
+@app.route('/api/identify-pill', methods=['POST'])
 def get_pill_info():
     if 'image' not in request.files:
         return jsonify({'error': f'Must attach an image to the request: {list(request.files.items())}'}), 400
@@ -30,7 +30,7 @@ def get_pill_info():
 
     return prediction_json
 
-@app.route('/register', methods=['GET', 'POST'])
+@app.route('/api/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
         username = request.form.get('username')
@@ -41,7 +41,7 @@ def register():
         # db.session.commit()
         return {'success': 'account created! jk nothing is going to happen'}
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/api/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         username = request.form.get('username')
@@ -55,7 +55,7 @@ def login():
     return render_template('index.html')
 
 
-@app.route('/logout')
+@app.route('/api/logout')
 @login_required
 def logout():
     logout_user()
