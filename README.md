@@ -8,7 +8,13 @@ make sure that your `config.py` has the following:
 - `POSTGRESQL_PASSWORD` Your Azure PostgreSQL account password
 
 in `backend/` 
+
 ```flask run``` 
+
+## running the front end 
+navigate to `frontend/pillwatch` 
+
+```yarn dev```
 
 ## installation 
 pip install flask-cors
