@@ -10,10 +10,10 @@ export async function submitFile(selectedFile, setResponse) {
       alert('Please select a file before submitting.');
       return;
     }
-
+    console.log(selectedFile);
     const formData = new FormData();
     formData.append('image', selectedFile);
-
+    console.log(formData);
     try {
       const response = await fetch('http://127.0.0.1:5000/api/identify-pill', {
         method: 'POST',
