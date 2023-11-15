@@ -17,5 +17,10 @@ navigate to `frontend/pillwatch`
 ```yarn dev```
 
 ## installation 
-pip install flask-cors
+`pip install flask-cors`
 
+in your virtual environment:
+`pip install -r requirements.txt` 
+
+after installing new packages 
+`pip freeze > requirements.txt`
