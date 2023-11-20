@@ -17,20 +17,18 @@ cursor = conn.cursor()
 # Drop previous table of same name if one exists
 
 # [!INCLUDE [applies-to-postgresql-flexible-server](../includes/applies-to-postgresql-flexible-server.md)]
-cursor.execute("DROP TABLE IF EXISTS pills;")
+cursor.execute("DROP TABLE IF EXISTS user_table;")
 print("Finished dropping table (if existed)")
 # Create a table
 
 # [!INCLUDE [applies-to-postgresql-flexible-server](../includes/applies-to-postgresql-flexible-server.md)]
-cursor.execute("CREATE TABLE pills (id serial PRIMARY KEY, name VARCHAR(50), quantity INTEGER);")
+cursor.execute("CREATE TABLE user_table (id serial PRIMARY KEY, username VARCHAR(100), password VARCHAR(300) );")
 print("Finished creating table")
 # Insert some data into the table
 
 # [!INCLUDE [applies-to-postgresql-flexible-server](../includes/applies-to-postgresql-flexible-server.md)]
-cursor.execute("INSERT INTO pills (name, quantity) VALUES (%s, %s);", ("banana", 150))
-cursor.execute("INSERT INTO pills (name, quantity) VALUES (%s, %s);", ("orange", 154))
-cursor.execute("INSERT INTO pills (name, quantity) VALUES (%s, %s);", ("apple", 100))
-print("Inserted 3 rows of data")
+cursor.execute("INSERT INTO user_table (username, password) VALUES (%s, %s);", ("test", 'not hashed'))
+print("Inserted 1 rows of data")
 # Clean up
 
 # [!INCLUDE [applies-to-postgresql-flexible-server](../includes/applies-to-postgresql-flexible-server.md)]

@@ -4,10 +4,11 @@ from bcrypt import checkpw, gensalt, hashpw
 from config import *
 
 class User(db.Model, UserMixin):
+    __tablename__ = 'user_table'
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(100), unique=True, nullable=False)
     password = db.Column(db.String(100), nullable=False)
-    email = db.Column(db.String(100), nullable=False)
+    # email = db.Column(db.String(100), nullable=False)
 
     def set_password(self, password):
         # Hash the password and store it in the user object

@@ -35,10 +35,11 @@ def register():
     if request.method == 'POST':
         username = request.form.get('username')
         password = request.form.get('password')
+        print(f"Got username: {username} password: {password}")
         user = User(username=username) 
         user.set_password(password)
-        # db.session.add(user)
-        # db.session.commit()
+        db.session.add(user)
+        db.session.commit()
         return {'success': 'account created! jk nothing is going to happen'}
 
 @app.route('/api/login', methods=['GET', 'POST'])
